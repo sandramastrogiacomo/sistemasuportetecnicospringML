@@ -20,7 +20,7 @@ public class Chamado {
     private LocalDateTime dataHora;
 
     @Enumerated(EnumType.STRING)
-    private EstadoChamado estado;
+    private EstadoChamadoEnum estado;
 
     @ManyToOne
     @JoinColumn(name = "atendente_id")
@@ -79,11 +79,11 @@ public class Chamado {
         this.dataHora = dataHora;
     }
 
-    public EstadoChamado getEstado() {
+    public EstadoChamadoEnum getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoChamado estado) {
+    public void setEstado(EstadoChamadoEnum estado) {
         this.estado = estado;
     }
 

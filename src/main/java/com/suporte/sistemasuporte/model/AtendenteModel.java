@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "atendentes")
-public class Atendente {
+public class AtendenteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,16 @@ public class Atendente {
 
 @ManyToOne
 @JoinColumn(name = "balcao_id")
-private BalcaoAtendimento balcao;
+private BalcaoAtendimentoModel balcao;
 
 @OneToMany(mappedBy = "atendente", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Chamado> chamados;
+private List<ChamadoModel> chamados;
 
-public Atendente () {
+public AtendenteModel() {
 
 }
 
-public Atendente (Long id, String nome, String nomeBalcao) {
+public AtendenteModel(Long id, String nome, String nomeBalcao) {
     this.id = id;
     this.nome = nome;
     this.nomeBalcao = nomeBalcao;
@@ -58,11 +58,11 @@ public Atendente (Long id, String nome, String nomeBalcao) {
         this.nomeBalcao = nomeBalcao;
     }
 
-    public List<Chamado> getChamados() {
+    public List<ChamadoModel> getChamados() {
         return chamados;
     }
 
-    public void setChamados(List<Chamado> chamados) {
+    public void setChamados(List<ChamadoModel> chamados) {
         this.chamados = chamados;
     }
 }

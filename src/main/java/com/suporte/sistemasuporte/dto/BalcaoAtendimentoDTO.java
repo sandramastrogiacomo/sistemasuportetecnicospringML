@@ -1,7 +1,5 @@
 package com.suporte.sistemasuporte.dto;
 
-import com.suporte.sistemasuporte.model.BalcaoAtendimento;
-
 public class BalcaoAtendimentoDTO {
     private Long id;
     private String nomeBalcao;

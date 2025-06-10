@@ -1,7 +1,7 @@
 package com.suporte.sistemasuporte.dto;
 
 
-import com.suporte.sistemasuporte.model.Chamado;
+import com.suporte.sistemasuporte.model.ChamadoModel;
 
 import java.time.LocalDateTime;
 
@@ -28,7 +28,7 @@ public class ChamadoRespostaDTO {
         this.dataHora = dataHora;
     }
 
-    public ChamadoRespostaDTO(Chamado chamado) {
+    public ChamadoRespostaDTO(ChamadoModel chamado) {
         this.id = chamado.getId();
         this.nomeCliente = chamado.getNomeCliente();
         this.nomeProduto = chamado.getNomeProduto();

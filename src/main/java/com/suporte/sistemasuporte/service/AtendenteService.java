@@ -1,9 +1,11 @@
 package com.suporte.sistemasuporte.service;
 
 import com.suporte.sistemasuporte.dto.AtendenteDTO;
-import com.suporte.sistemasuporte.model.Atendente;
+import com.suporte.sistemasuporte.model.AtendenteModel;
 import com.suporte.sistemasuporte.repository.AtendenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,20 +14,26 @@ import java.util.Optional;
 @Service
 public class AtendenteService {
 
+    private final AtendenteRepository repository;
+
+    public AtendenteService(AtendenteRepository repository) {
+        this.repository = repository;
+    }
+
     @Autowired
     private AtendenteRepository atendenteRepository;
 
-    public Atendente create(AtendenteDTO atendenteDTO) {
-    Atendente atendente = new Atendente();
+    public AtendenteModel create(AtendenteDTO atendenteDTO) {
+    AtendenteModel atendente = new AtendenteModel();
     atendente.setNome(atendenteDTO.getNome());
     return atendenteRepository.save(atendente);
     }
 
-    public List<Atendente> findAll() {
-        return atendenteRepository.findAll();
+    public Page<AtendenteModel> findAll(Pageable pageable) {
+        return atendenteRepository.findAll(pageable);
     }
     public boolean delete(Long id) {
-        Optional<Atendente> atendenteOptional = atendenteRepository.findById(id);
+        Optional<AtendenteModel> atendenteOptional = atendenteRepository.findById(id);
         if (atendenteOptional.isPresent()) {
             atendenteRepository.deleteById(id);
             return true;
@@ -33,7 +41,7 @@ public class AtendenteService {
             return false;
         }
     }
-    Optional<Atendente> findById(Long id) {
+    public Optional<AtendenteModel> findById(Long id) {
         return atendenteRepository.findById(id);
     }
 }

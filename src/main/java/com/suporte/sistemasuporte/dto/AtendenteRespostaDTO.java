@@ -1,12 +1,12 @@
 package com.suporte.sistemasuporte.dto;
 
-import com.suporte.sistemasuporte.model.Atendente;
+import com.suporte.sistemasuporte.model.AtendenteModel;
 
 public class AtendenteRespostaDTO {
     private Long id;
     private String nome;
 
-public AtendenteRespostaDTO(Atendente atendente) {
+public AtendenteRespostaDTO(AtendenteModel atendente) {
     this.id = atendente.getId();
     this.nome = atendente.getNome();
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class BalcaoAtendimento extends BalcaoAtendimentoRespostaDTO {
+public class BalcaoAtendimentoModel extends BalcaoAtendimentoRespostaDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +14,11 @@ public class BalcaoAtendimento extends BalcaoAtendimentoRespostaDTO {
     private String nomeBalcao;
 
     @OneToMany(mappedBy = "balcao", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Atendente> atendentes;
+    private List<AtendenteModel> atendentes;
 
-    public BalcaoAtendimento() {
+    public BalcaoAtendimentoModel() {
     }
-    public BalcaoAtendimento(Long id, String nomeBalcao) {
+    public BalcaoAtendimentoModel(Long id, String nomeBalcao) {
         this.id = id;
         this.nomeBalcao = nomeBalcao;
     }
@@ -39,11 +39,11 @@ public class BalcaoAtendimento extends BalcaoAtendimentoRespostaDTO {
         this.nomeBalcao = nomeBalcao;
     }
 
-    public List<Atendente> getAtendentes() {
+    public List<AtendenteModel> getAtendentes() {
         return atendentes;
     }
 
-    public void setAtendentes(List<Atendente> atendentes) {
+    public void setAtendentes(List<AtendenteModel> atendentes) {
         this.atendentes = atendentes;
     }
 }

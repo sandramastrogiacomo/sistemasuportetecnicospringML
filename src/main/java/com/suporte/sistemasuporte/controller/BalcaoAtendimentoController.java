@@ -2,7 +2,6 @@ package com.suporte.sistemasuporte.controller;
 
 import com.suporte.sistemasuporte.dto.BalcaoAtendimentoDTO;
 import com.suporte.sistemasuporte.dto.BalcaoAtendimentoRespostaDTO;
-import com.suporte.sistemasuporte.model.BalcaoAtendimento;
 import com.suporte.sistemasuporte.service.BalcaoAtendimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

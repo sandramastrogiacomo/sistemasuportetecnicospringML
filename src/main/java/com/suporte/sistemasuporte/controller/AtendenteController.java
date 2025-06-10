@@ -2,14 +2,17 @@ package com.suporte.sistemasuporte.controller;
 
 import com.suporte.sistemasuporte.dto.AtendenteDTO;
 import com.suporte.sistemasuporte.dto.AtendenteRespostaDTO;
-import com.suporte.sistemasuporte.model.Atendente;
+import com.suporte.sistemasuporte.model.AtendenteModel;
 import com.suporte.sistemasuporte.service.AtendenteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.stream.Collectors;
+
+
+
 
 @RestController
 @RequestMapping("/atendentes")
@@ -19,24 +22,22 @@ public class AtendenteController {
     private AtendenteService atendenteService;
 
     @PostMapping
-public ResponseEntity<Atendente> create(@RequestBody AtendenteDTO atendenteDTO) {
-    Atendente atendente = atendenteService.create(atendenteDTO);
+public ResponseEntity<AtendenteModel> create(@RequestBody AtendenteDTO atendenteDTO) {
+    AtendenteModel atendente = atendenteService.create(atendenteDTO);
     return ResponseEntity.status(HttpStatus.CREATED).body(atendente);
     }
+
     @GetMapping
-    public ResponseEntity<List<AtendenteRespostaDTO>> findAll() {
-        List<Atendente> atendentes =atendenteService.findAll();
-        List<AtendenteRespostaDTO> atendenteRespostaDTOs = atendentes.stream().map(AtendenteRespostaDTO :: new)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(atendenteRespostaDTOs);
+    public ResponseEntity<Page<AtendenteRespostaDTO>> findAll(Pageable pageable) {
+        Page<AtendenteModel> atendentes = atendenteService.findAll(pageable);
+        Page<AtendenteRespostaDTO> dtoPage = atendentes.map(AtendenteRespostaDTO :: new);
+        return ResponseEntity.ok(dtoPage);
     }
     @DeleteMapping ("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        boolean deleted = atendenteService.delete(id);
-        if(deleted){
+    public ResponseEntity<String> delete(@PathVariable Long id){
+        atendenteService.delete(id);
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
+
         }
     }
-}
+

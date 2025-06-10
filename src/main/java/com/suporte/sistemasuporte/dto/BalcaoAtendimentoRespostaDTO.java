@@ -1,6 +1,6 @@
 package com.suporte.sistemasuporte.dto;
 
-import com.suporte.sistemasuporte.model.BalcaoAtendimento;
+import com.suporte.sistemasuporte.model.BalcaoAtendimentoModel;
 
 public class BalcaoAtendimentoRespostaDTO {
 
@@ -14,7 +14,7 @@ public class BalcaoAtendimentoRespostaDTO {
            this.nomeBalcao = nomeBalcao;
     }
 
-    public BalcaoAtendimentoRespostaDTO(BalcaoAtendimento balcao) {
+    public BalcaoAtendimentoRespostaDTO(BalcaoAtendimentoModel balcao) {
            this.id = balcao.getId();
            this.nomeBalcao = balcao.getNomeBalcao();
     }

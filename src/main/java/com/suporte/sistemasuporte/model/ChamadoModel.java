@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Chamado {
+public class ChamadoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +24,13 @@ public class Chamado {
 
     @ManyToOne
     @JoinColumn(name = "atendente_id")
-    private Atendente atendente;
+    private AtendenteModel atendente;
 
-    public Chamado() {
+    public ChamadoModel() {
         this.dataHora = LocalDateTime.now();
     }
 
-    public Chamado(Long id, String nomeCliente, String nomeProduto, String estadoChamado, LocalDateTime dataHora, Atendente atendente) {
+    public ChamadoModel(Long id, String nomeCliente, String nomeProduto, String estadoChamado, LocalDateTime dataHora, AtendenteModel atendente) {
         this.id = id;
         this.nomeCliente = nomeCliente;
         this.nomeProduto = nomeProduto;
@@ -87,23 +87,23 @@ public class Chamado {
         this.estado = estado;
     }
 
-    public Atendente getAtendente() {
+    public AtendenteModel getAtendente() {
         return atendente;
     }
 
-    public void setAtendente(Atendente atendente) {
+    public void setAtendente(AtendenteModel atendente) {
         this.atendente = atendente;
     }
 
     @ManyToOne
     @JoinColumn(name = "balcao_atendimento_id")
-    private BalcaoAtendimento balcaoAtendimento;
+    private BalcaoAtendimentoModel balcaoAtendimento;
 
-    public BalcaoAtendimento getBalcaoAtendimento() {
+    public BalcaoAtendimentoModel getBalcaoAtendimento() {
         return balcaoAtendimento;
     }
 
-    public void setBalcaoAtendimento(BalcaoAtendimento balcaoAtendimento) {
+    public void setBalcaoAtendimento(BalcaoAtendimentoModel balcaoAtendimento) {
         this.balcaoAtendimento = balcaoAtendimento;
     }
 }
